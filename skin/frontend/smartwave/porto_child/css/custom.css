@@ -2510,7 +2510,7 @@ button.button.btn-cart>span {
 .product-collateral {
     margin-left: -20px;
     margin-right: -20px;
-    margin-top: 35px;
+    margin-top: 0px;
     /* width: 66%; */
     float: left;
 }
@@ -6118,4 +6118,10 @@ ul.form-list li div.input-box {
     color: #0088cc;
     text-decoration: underline;
     font-weight: 600;
+}
+.product-tabs .eve-section-title {
+    color: #333;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 40px 0 16px 0;
 }
