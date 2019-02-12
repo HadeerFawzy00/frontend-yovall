@@ -6125,3 +6125,13 @@ ul.form-list li div.input-box {
     text-transform: uppercase;
     margin: 40px 0 16px 0;
 }
+.product-tabs .eve-product-aspects-col {
+    border-left: 1px solid;
+}
+.product-tabs .eve-product-description-col .eve-product-description-img {
+    max-width: 100%;
+    margin: 10px 0;
+}
+.eve-embeded-videos-wrapper {
+    margin-top: 40px;
+}
