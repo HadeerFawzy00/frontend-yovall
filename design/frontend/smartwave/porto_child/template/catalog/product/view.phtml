@@ -144,162 +144,183 @@
 
                         <!-- -------------------------product info col starts----------------------- -->
                         <div class="product-shop col-sm-<?php echo 12-Mage::getStoreConfig("porto_settings/product_view/product_image_size", $code); ?>">
-                            <!-- -------------------------product name starts----------------------- -->
-                            <div class="product-name">
-                                <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-                            </div>
-                            <!-- -------------------------product name ends----------------------- -->
-                            <!-- -------------------------product rate starts----------------------- -->
-                            <?php if($enabled_richsnippets): ?>
-                            <?php
-                                $storeId = Mage::app()->getStore()->getId();
-                                $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_product->getId());
-                            ?>
-                            <?php if ($summaryData['reviews_count']): ?>
-                                <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="no-display">
-                                    <span itemprop="ratingValue"><?php echo $summaryData['rating_summary']; ?></span>
-                                    <span itemprop="reviewCount"><?php echo $summaryData['reviews_count']; ?></span>
-                                    <span itemprop="bestRating">100</span>
-                                    <span itemprop="worstRating">0</span>
-                                </span>
-                            <?php endif; ?>
-                            <?php endif; ?>
+                            
+                            <div class="row">
+                                <div class="col-md-7">
 
-                            <?php 
-                            if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
-                            ?>
-                            <?php 
-                                $review_html = $this->getReviewsSummaryHtml($product);
-                                if($review_html){
-                                    echo $review_html;
-                                }else{
-                            ?>
-                                <div class="ratings">
-                                    <div class="rating-box">
-                                        <div class="rating" style="width:0"></div>
+                                    <!-- -------------------------product name starts----------------------- -->
+                                    <div class="product-name">
+                                        <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                                     </div>
-                                    <p class="rating-links">
-                                        <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
-                                    </p>
-                                </div>
-                            <?php                            
-                                }
-                            ?>
-                            <?php else: ?>
-                                <div class="ratings">
-                                    <div class="rating-box">
-                                        <div class="rating" style="width:0"></div>
-                                    </div>
-                                    <p class="rating-links">
-                                        <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
-                                    </p>
-                                </div>
-                            <?php endif; ?>
-                            <!-- -------------------------product rate ends----------------------- -->
-                            <?php
-                                if (Mage::getStoreConfig("porto_settings/product_view/prev_next",$code)){
-                            ?>
-                                <div class="prev-next-products">
-                                    <?php $_prev = Mage::helper('porto')->getPreviousProduct(); ?>
-                                    <?php $_next = Mage::helper('porto')->getNextProduct(); ?>
-                                    
-                                    <?php if($_prev): ?>
-                                    <div class="product-nav product-prev">
-                                        <a href="<?php echo $_prev->getProductUrl();?>" title="<?php echo $this->__("Previous Product"); ?>">
-                                            <?php echo Mage::getStoreConfig("porto_settings/product_view/prev_text",$code); ?>
-                                        </a>
-                                        <div class="product-pop theme-border-color">
-                                            <?php
-                                            $image_src = $this->helper('catalog/image')->init($_prev, 'image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(80);
-                                            ?>
-                                            <img class="product-image" src="<?php echo $image_src; ?>" alt="<?php echo $this->__('Previous');?>"/>
-                                            <h3 class="product-name"><?php echo $_helper->productAttribute($_prev, $_prev->getName(), 'name') ?></h3>
-                                        </div>
-                                    </div>
+                                    <!-- -------------------------product name ends----------------------- -->
+                                    <!-- -------------------------product rate starts----------------------- -->
+                                    <?php if($enabled_richsnippets): ?>
+                                    <?php
+                                        $storeId = Mage::app()->getStore()->getId();
+                                        $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_product->getId());
+                                    ?>
+                                    <?php if ($summaryData['reviews_count']): ?>
+                                        <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="no-display">
+                                            <span itemprop="ratingValue"><?php echo $summaryData['rating_summary']; ?></span>
+                                            <span itemprop="reviewCount"><?php echo $summaryData['reviews_count']; ?></span>
+                                            <span itemprop="bestRating">100</span>
+                                            <span itemprop="worstRating">0</span>
+                                        </span>
                                     <?php endif; ?>
-                                    <?php if($_next): ?>
-                                    <div class="product-nav product-next">
-                                        <a class="product-next" href="<?php echo $_next->getProductUrl();?>" title="<?php echo $this->__("Next Product"); ?>"><?php echo Mage::getStoreConfig("porto_settings/product_view/next_text",$code); ?></a>
-                                        <div class="product-pop theme-border-color">
-                                            <?php
-                                            $image_src = $this->helper('catalog/image')->init($_next, 'image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(80);
-                                            ?>
-                                            <img class="product-image" src="<?php echo $image_src; ?>" alt="<?php echo $this->__('Previous');?>"/>
-                                            <h3 class="product-name"><?php echo $_helper->productAttribute($_next, $_next->getName(), 'name') ?></h3>
-                                        </div>
-                                    </div>
                                     <?php endif; ?>
-                                </div>
-                            <?php
-                                }
-                            ?>
-                            <div class="product-info">
-                                <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
-                                    <?php echo $this->getChildHtml('product_type_data'); ?>
-                                    <?php echo $this->getTierPriceHtml(); ?>
-                                    <?php echo $price_properties; ?>
-                                </div>
-                                <?php echo $this->getChildHtml('extrahint') ?>
-                                <?php if ($this->canEmailToFriend()): ?>
-                                    <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
-                                <?php endif; ?>
-                                <?php if($sku = $_product->getSku()): ?>
-                                    <?php if($enabled_richsnippets): ?><meta itemprop="productID" content="sku:<?php echo $sku; ?>" /><?php endif; ?>
-                                <?php endif; ?>
-                                <?php echo $this->getChildHtml('alert_urls') ?>
-                                <?php echo $this->getChildHtml('other');?>
-                            </div>
-                            <?php if (!$this->hasOptions()):?>
-                                <div class="clearer"></div>
-                                <div class="add-to-box">
-                                    <?php if($_product->isSaleable()): ?>
-                                        <?php echo $this->getChildHtml('addtocart') ?>
-                                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+
+                                    <?php 
+                                    if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
+                                    ?>
+                                    <?php 
+                                        $review_html = $this->getReviewsSummaryHtml($product);
+                                        if($review_html){
+                                            echo $review_html;
+                                        }else{
+                                    ?>
+                                        <div class="ratings">
+                                            <div class="rating-box">
+                                                <div class="rating" style="width:0"></div>
+                                            </div>
+                                            <p class="rating-links">
+                                                <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
+                                            </p>
+                                        </div>
+                                    <?php                            
+                                        }
+                                    ?>
+                                    <?php else: ?>
+                                        <div class="ratings">
+                                            <div class="rating-box">
+                                                <div class="rating" style="width:0"></div>
+                                            </div>
+                                            <p class="rating-links">
+                                                <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
+                                            </p>
+                                        </div>
+                                    <?php endif; ?>
+                                    <!-- -------------------------product rate ends----------------------- -->
+                                    <?php
+                                        if (Mage::getStoreConfig("porto_settings/product_view/prev_next",$code)){
+                                    ?>
+                                        <div class="prev-next-products">
+                                            <?php $_prev = Mage::helper('porto')->getPreviousProduct(); ?>
+                                            <?php $_next = Mage::helper('porto')->getNextProduct(); ?>
+                                            
+                                            <?php if($_prev): ?>
+                                            <div class="product-nav product-prev">
+                                                <a href="<?php echo $_prev->getProductUrl();?>" title="<?php echo $this->__("Previous Product"); ?>">
+                                                    <?php echo Mage::getStoreConfig("porto_settings/product_view/prev_text",$code); ?>
+                                                </a>
+                                                <div class="product-pop theme-border-color">
+                                                    <?php
+                                                    $image_src = $this->helper('catalog/image')->init($_prev, 'image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(80);
+                                                    ?>
+                                                    <img class="product-image" src="<?php echo $image_src; ?>" alt="<?php echo $this->__('Previous');?>"/>
+                                                    <h3 class="product-name"><?php echo $_helper->productAttribute($_prev, $_prev->getName(), 'name') ?></h3>
+                                                </div>
+                                            </div>
+                                            <?php endif; ?>
+                                            <?php if($_next): ?>
+                                            <div class="product-nav product-next">
+                                                <a class="product-next" href="<?php echo $_next->getProductUrl();?>" title="<?php echo $this->__("Next Product"); ?>"><?php echo Mage::getStoreConfig("porto_settings/product_view/next_text",$code); ?></a>
+                                                <div class="product-pop theme-border-color">
+                                                    <?php
+                                                    $image_src = $this->helper('catalog/image')->init($_next, 'image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(80);
+                                                    ?>
+                                                    <img class="product-image" src="<?php echo $image_src; ?>" alt="<?php echo $this->__('Previous');?>"/>
+                                                    <h3 class="product-name"><?php echo $_helper->productAttribute($_next, $_next->getName(), 'name') ?></h3>
+                                                </div>
+                                            </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
+                                    <div class="product-info">
+                                        <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
+                                            <?php echo $this->getChildHtml('product_type_data'); ?>
+                                            <?php echo $this->getTierPriceHtml(); ?>
+                                            <?php echo $price_properties; ?>
+                                        </div>
+                                        <?php echo $this->getChildHtml('extrahint') ?>
+                                        <?php if ($this->canEmailToFriend()): ?>
+                                            <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
                                         <?php endif; ?>
+                                        <?php if($sku = $_product->getSku()): ?>
+                                            <?php if($enabled_richsnippets): ?><meta itemprop="productID" content="sku:<?php echo $sku; ?>" /><?php endif; ?>
+                                        <?php endif; ?>
+                                        <?php echo $this->getChildHtml('alert_urls') ?>
+                                        <?php echo $this->getChildHtml('other');?>
+                                    </div>
+                                    <?php if (!$this->hasOptions()):?>
+                                        <div class="clearer"></div>
+                                        <div class="add-to-box">
+                                            <?php if($_product->isSaleable()): ?>
+                                                <?php echo $this->getChildHtml('addtocart') ?>
+                                                <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                            <?php echo $this->getChildHtml('addto') ?>
+                                        </div>
+                                        <?php echo $this->getChildHtml('extra_buttons') ?>
+                                    <?php elseif (!$_product->isSaleable()): ?>
+                                        <div class="clearer" <?php echo (!$_product->isAvailable()) ? 'style="display: none;"' : '' ?>></div>
+                                        <div class="add-to-box" <?php echo (!$_product->isAvailable()) ? 'style="display: none;"' : '' ?>>
+                                            <?php echo $this->getChildHtml('addto') ?>
+                                        </div>
                                     <?php endif; ?>
-                                    <?php echo $this->getChildHtml('addto') ?>
-                                </div>
-                                <?php echo $this->getChildHtml('extra_buttons') ?>
-                            <?php elseif (!$_product->isSaleable()): ?>
-                                <div class="clearer" <?php echo (!$_product->isAvailable()) ? 'style="display: none;"' : '' ?>></div>
-                                <div class="add-to-box" <?php echo (!$_product->isAvailable()) ? 'style="display: none;"' : '' ?>>
-                                    <?php echo $this->getChildHtml('addto') ?>
-                                </div>
-                            <?php endif; ?>
-                                
-                            <!-- Delivery & Returns POP UP starts -->
-                            <?php /* Start Added By Hazem - August 24 2018 */ ?>
-                            <a class="free-shipping" href="#free-shipping-container">
-                                <?php echo $this->__('Delivery & Returns') ?>
-                                <i class="fa fa-plus"></i>
-                            </a>    
-                            <div id="free-shipping-container" class="free-shipping-popup-container">
-                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product_custom_tab')->toHtml() ?>
-                            </div>
-                            <?php /* End Added By Hazem - August 24 2018 */ ?>
-                            <!-- Delivery & Returns POP UP ends -->
+                                        
+                                    <!-- Delivery & Returns POP UP starts -->
+                                    <?php /* Start Added By Hazem - August 24 2018 */ ?>
+                                    <a class="free-shipping" href="#free-shipping-container">
+                                        <?php echo $this->__('Delivery & Returns') ?>
+                                        <i class="fa fa-plus"></i>
+                                    </a>    
+                                    <div id="free-shipping-container" class="free-shipping-popup-container">
+                                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('product_custom_tab')->toHtml() ?>
+                                    </div>
+                                    <?php /* End Added By Hazem - August 24 2018 */ ?>
+                                    <!-- Delivery & Returns POP UP ends -->
 
-                            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                            <?php endif;?>
-                            
-                            <!-- product badges (display none) -->
-                            <div class="product-badges">
-                                <div class="freeshipping" title="<?php echo $this->__('Free Shipping') ?>"></div>
-                                <div class="warranty" title="<?php echo $this->__('1 Year Warranty') ?>"></div>
-                                <div class="moneyback" title="<?php echo $this->__('14 Days Money Back') ?>"></div>
-                            </div>
-                            
-                            <?php if($custom_block_html && $move_custom_block):?>
-                                <div class="short-custom-block">
-                                    <?php echo $custom_block_html; ?>
+                                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                                        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                                    <?php endif;?>
+                                    
+                                    <!-- product badges (display none) -->
+                                    <div class="product-badges">
+                                        <div class="freeshipping" title="<?php echo $this->__('Free Shipping') ?>"></div>
+                                        <div class="warranty" title="<?php echo $this->__('1 Year Warranty') ?>"></div>
+                                        <div class="moneyback" title="<?php echo $this->__('14 Days Money Back') ?>"></div>
+                                    </div>
+                                    
+                                    <?php if($custom_block_html && $move_custom_block):?>
+                                        <div class="short-custom-block">
+                                            <?php echo $custom_block_html; ?>
+                                        </div>
+                                    <?php endif;?>
+                                    
+                                    <div class="clearer"></div>
+                                    <?php echo $this->getChildHtml('addthis_sharetool'); ?>
                                 </div>
-                            <?php endif;?>
-                            
-                            <div class="clearer"></div>
-                            <?php echo $this->getChildHtml('addthis_sharetool'); ?>
-                        </div>
-
+                                <!-- -------------------------product info col ends----------------------- -->
+                                <div class="col-md-5 eve-sidebar-col">
+                                    <div class="sidebar">
+                                        <div class="custom-block custom-block-1">
+                                            <div>
+                                                <i class="icon-shipped"></i><h3>FREE<br>SHIPPING</h3>
+                                            </div>
+                                            <div>
+                                                <i class="icon-us-dollar"></i><h3>100% MONEY<br>BACK GUARANTEE</h3>
+                                            </div>
+                                            <div>
+                                                <i class="icon-online-support"></i><h3>ONLINE<br>SUPPORT 24/7</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>        
                     </div>
                     <?php if($custom_block_html && !$move_custom_block): ?>
                 </div>
@@ -509,16 +530,30 @@
         
         <!-- -------------product short description starts------------- -->
         <?php if ($_product->getShortDescription()):?>
-            <div class="short-description <?php if($move_custom_block):?>no-border<?php endif;?>"">
-                <h2><?php echo $this->__('Quick Overview') ?></h2>
-                <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-            </div>
-        <?php endif;?>
+            
+            <div class="row eve-product-section-row">
+            <!-- product short description -->
+                <div class="col-md-9">
+                    <div class="short-description <?php if($move_custom_block):?>no-border<?php endif;?>"">
+                        <h2><?php echo $this->__('Why buy this product?') ?></h2>
+                        <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                    <?php endif;?>
+
+                    <!-- ------------- upsell products(ALSO PURCHASED) starts----------------- -->
+                    <?php $upsell = $this->getChildHtml('upsell_products'); ?>
+                    <?php /*if(Mage::getStoreConfig("porto_settings/product_view/move_upsell",$code))*/ echo $upsell; ?>
+                    <!-- ------------- upsell products(ALSO PURCHASED) ends----------------- -->    
+                    
+                </div>
+                <!-- related products -->
+                <div class="col-md-3 eve-related-products-col">
+                    <?php echo $this->getChildHtml('catalog.product.related') ?>
+                </div>
+            </div>    
         <!-- -------------product short description ends------------- -->
-        <!-- ------------- upsell products(ALSO PURCHASED) starts----------------- -->
-        <?php $upsell = $this->getChildHtml('upsell_products'); ?>
-        <?php /*if(Mage::getStoreConfig("porto_settings/product_view/move_upsell",$code))*/ echo $upsell; ?>
-        <!-- ------------- upsell products(ALSO PURCHASED) ends----------------- -->    
+
+        
 
         <!-- ------------- product description and reviews tabs starts----------------- -->
         <div class="product-collateral">
@@ -542,9 +577,6 @@
     <?php //if(!Mage::getStoreConfig("porto_settings/product_view/move_upsell",$code)) echo $upsell; ?>
 
     </div>
-
-
-
 
 
 <script type="text/javascript">

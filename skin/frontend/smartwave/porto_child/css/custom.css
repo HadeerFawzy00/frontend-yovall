@@ -1998,8 +1998,8 @@ ul#payment_form_netgo_stripe ul.opc-cc-list li {
 }
 
 .price-box {
-    margin: 5px 0 0;
-    text-align: center;
+    /* margin: 5px 0 0;
+    text-align: center; */
 }
 
 .old-price .price {
@@ -2025,8 +2025,8 @@ ul#payment_form_netgo_stripe ul.opc-cc-list li {
 }
 
 .box-up-sell .price-box {
-    margin: 5px 0 0;
-    text-align: left;
+    /* margin: 5px 0 0;
+    text-align: left; */
 }
 
 .box-up-sell .old-price .price {
@@ -3694,7 +3694,7 @@ button.button.btn-proceed-checkout.btn-checkout span span:before {
         margin-top: 30px;
         margin-bottom: 50px;
         float: unset;
-        width: 80%;
+        /* width: 80%; */
         padding: 0 15px;
     }
     .footer .col-sm-4 {
@@ -4155,7 +4155,7 @@ h3.push-top strong {
         left: 0;
     }
     .page {
-        padding-top: 177px;
+        padding-top: 120px;
         overflow: hidden;
     }
     body {
@@ -4883,7 +4883,7 @@ ul#payment_form_payfortcc li#payfortcc_cc_type_exp_div div.v-fix:first-child {
     }
     .catalog-product-view a.free-shipping {
         width: 100%;
-        margin-top: 20px;
+        margin-top: 35px;
     }
     .opc-installment-plans {
         margin-top: 10px;
@@ -5308,12 +5308,12 @@ ul#payment_form_payfortcc li#payfortcc_cc_type_exp_div div.v-fix:first-child {
 
 @media (max-width: 767px) {
     .product-view .product-shop {
-        margin-top: 90px;
+        margin-top: 190px;
     }
     li.etalage_small_thumbs {
         display: block;
         height: auto;
-        max-height: 90px;
+        /* max-height: 90px; */
     }
 }
 /* ----------------------------------------------------------------- */
@@ -6092,6 +6092,9 @@ ul.form-list li div.input-box {
 
 /* ------------------------------------------ */
 /* product page "Marketing edits" */
+.product-essential {
+    margin-bottom: 30px;
+}
 .product-collateral {
     width: 100%;
 }
@@ -6103,6 +6106,7 @@ ul.form-list li div.input-box {
 }
 .add-to-cart button.button span span {
     padding-left: 50px;
+    padding-right: 20px;
 }
 .short-description h2{
     color: #333;
@@ -6134,4 +6138,90 @@ ul.form-list li div.input-box {
 }
 .eve-embeded-videos-wrapper {
     margin-top: 40px;
+}
+
+/* related products */
+.block.block-related .product input.checkbox {
+    display: none;
+}
+.block.block-related .product .row {
+    margin-left: -15px;
+    margin-right: 0;
+}
+.block.block-related .product .row .price-box {
+    text-align: left;
+}
+.block.block-related .product-name {
+    margin-top: 0;
+}
+.block-related .ratings {
+    margin: 0px 0 8px;
+}
+.block.block-related .product-details {
+    padding-left: 0;
+    padding-right: 0;
+} 
+.col2-right-layout .col-right.sidebar {
+    background-color: #fff;
+}
+.eve-product-section-row {
+    margin: 0 -15px;
+}
+.eve-related-products-col {
+    margin-top: -120px;
+}
+.block.block-related {
+    padding: 20px;
+    background: #fff;
+    margin-left: -17px;
+    margin-right: 16px;
+}
+.catalog-product-view .sidebar .custom-block {
+    padding: 0;
+}
+.eve-sidebar-col {
+    background: #fff;
+}
+.category-products .products-grid.columns4 {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+@media (max-width: 991px) {
+    .main.container {
+        width: 850px;
+    }
+    .product-collateral {
+        margin: 0;
+    }
+    .catalog-product-view .sidebar .custom-block {
+        margin-top: 30px;
+    }
+    .eve-related-products-col {
+        margin-top: 20px;
+    }
+    .block.block-related {
+        margin: 0;
+    }
+    .category-products .products-grid.columns4 li.item {
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 767px) {
+    .product-tabs .eve-product-aspects-col {
+        border: none;
+    }
+}
+@media (min-width: 767px) and (max-width: 991px) {
+    .eve-sidebar-col {
+        margin-left: -80%;
+    }
+}
+@media (min-width: 625px) and (max-width: 991px) {
+    .catalog-product-view .sidebar .custom-block {
+        display: flex;
+        justify-content: space-around;
+    }
+    .catalog-product-view .sidebar .custom-block-1>div {
+        border: none;
+    }
 }

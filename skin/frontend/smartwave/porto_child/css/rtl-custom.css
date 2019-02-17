@@ -2542,8 +2542,8 @@ ul#payment_form_netgo_stripe ul.opc-cc-list li {
 }
 
 .price-box {
-    margin: 5px 0 0;
-    text-align: center;
+    /* margin: 5px 0 0;
+    text-align: center; */
 }
 
 .old-price .price {
@@ -2569,8 +2569,8 @@ ul#payment_form_netgo_stripe ul.opc-cc-list li {
 }
 
 .box-up-sell .price-box {
-    margin: 5px 0 0;
-    text-align: right;
+    /* margin: 5px 0 0;
+    text-align: right; */
 }
 
 .box-up-sell .old-price .price {
@@ -2819,7 +2819,7 @@ button.button.btn-cart>span {
 }
 
 .add-to-cart button.button span span {
-    background: url(../images/cart-btn.png) no-repeat 11px 9px;
+    background: url(../images/cart-btn.png) no-repeat 98px 9px;
     background-size: 32px;
     padding-right: 18px;
     font-size: 18px;
@@ -3055,7 +3055,7 @@ button.button.btn-cart>span {
 .product-collateral {
     margin-right: -20px;
     margin-left: -20px;
-    margin-top: 35px;
+    margin-top: 0px;
     /* width: 66%; */
     float: right;
 }
@@ -4252,7 +4252,7 @@ button.button.btn-proceed-checkout.btn-checkout span span:before {
         margin-top: 30px;
         margin-bottom: 50px;
         float: unset;
-        width: 80%;
+        /* width: 80%; */
         padding: 0 15px;
     }
     .footer .col-sm-4 {
@@ -4717,7 +4717,7 @@ h3.push-top strong {
         right: 0;
     }
     .page {
-        padding-top: 177px;
+        padding-top: 120px;
     }
     body {
         overflow-y: auto;
@@ -5546,7 +5546,7 @@ ul#payment_form_payfortcc li#payfortcc_cc_type_exp_div div.v-fix:first-child {
     }
     .catalog-product-view a.free-shipping {
         width: 100%;
-        margin-top: 20px;
+        margin-top: 35px;
     }
     .opc-installment-plans {
         margin-top: 10px;
@@ -5901,12 +5901,12 @@ ul#payment_form_payfortcc li#payfortcc_cc_type_exp_div div.v-fix:first-child {
 
 @media (max-width: 767px) {
     .product-view .product-shop {
-        margin-top: 90px;
+        margin-top: 190px;
     }
     li.etalage_small_thumbs {
         display: block;
         height: auto;
-        max-height: 90px;
+        /* max-height: 90px; */
         direction: ltr !important;
     }
     li.etalage_small_thumbs *{
@@ -6639,4 +6639,148 @@ li.etalage_small_thumbs, li.etalage_small_thumbs *{
         text-align: center;
         margin-top: 0;
     }
+}
+
+
+/* ------------------------------------------ */
+/* product page "Marketing edits" */
+.product-essential {
+    margin-bottom: 30px;
+}
+.product-collateral {
+    width: 100%;
+}
+.product-view .product-shop {
+    padding-right: 15px;
+} 
+.add-to-cart button.button {
+    width: auto;
+}
+.add-to-cart button.button span span {
+    padding-right: 50px;
+    padding-left: 20px;
+}
+.short-description h2{
+    color: #333;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.short-description .std{
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+.short-description .std a {
+    color: #0088cc;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.product-tabs .eve-section-title {
+    color: #333;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 40px 0 16px 0;
+}
+.product-tabs .eve-product-aspects-col {
+    border-right: 1px solid;
+}
+.product-tabs .eve-product-description-col .eve-product-description-img {
+    max-width: 100%;
+    margin: 10px 0;
+}
+.eve-embeded-videos-wrapper {
+    margin-top: 40px;
+}
+
+/* related products */
+.block.block-related .product input.checkbox {
+    display: none;
+}
+.block.block-related .product .row {
+    margin-right: -15px;
+    margin-left: 0;
+}
+.block.block-related .product .row .price-box {
+    text-align: right;
+}
+.block.block-related .product-name {
+    margin-top: 0;
+}
+.block-related .ratings {
+    margin: 0px 0 8px;
+}
+.block.block-related .product-details {
+    padding-left: 0;
+    padding-right: 0;
+} 
+.col2-right-layout .col-right.sidebar {
+    background-color: #fff;
+}
+.product-view .product-img-box li.etalage_thumb {
+    left: 0;
+}
+.eve-product-section-row {
+    margin: 0 -15px;
+}
+.eve-related-products-col {
+    margin-top: -120px;
+}
+.block.block-related {
+    padding: 20px;
+    background: #fff;
+    margin-right: -17px;
+    margin-left: 16px;
+}
+.catalog-product-view .sidebar .custom-block {
+    padding: 0;
+}
+.eve-sidebar-col {
+    background: #fff;
+}
+.category-products .products-grid.columns4 {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+@media (max-width: 991px) {
+    .main.container {
+        width: 850px;
+    }
+    .product-collateral {
+        margin: 0;
+    }
+    .catalog-product-view .sidebar .custom-block {
+        margin-top: 30px;
+    }
+    .eve-related-products-col {
+        margin-top: 20px;
+    }
+    .block.block-related {
+        margin: 0;
+    }
+    .category-products .products-grid.columns4 li.item {
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 767px) {
+    .product-tabs .eve-product-aspects-col {
+        border: none;
+    }
+}
+@media (min-width: 767px) and (max-width: 991px) {
+    .eve-sidebar-col {
+        margin-right: -80%;
+    }
+}
+@media (min-width: 625px) and (max-width: 991px) {
+    .catalog-product-view .sidebar .custom-block {
+        display: flex;
+        justify-content: space-around;
+    }
+    .catalog-product-view .sidebar .custom-block-1>div {
+        border: none;
+    }
+}
+/* ------------------------------- */
+.a-left {
+    text-align: right !important;
 }
