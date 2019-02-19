@@ -136,7 +136,63 @@
                 <div class="col-sm-9">
                     <?php endif; ?>
                     <div class="row">
-                        <div class="product-img-box col-sm-<?php echo Mage::getStoreConfig("porto_settings/product_view/product_image_size", $code); ?> <?php echo Mage::getStoreConfig("porto_settings/product_view/thumbnail_image_type", $code); ?>">                            
+                        <!--  -->
+                        <div class="eve-product-title-rate-mobile">
+                            <!-- -------------------------product name starts----------------------- -->
+                            <div class="product-name">
+                                <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                            </div>
+                            <!-- -------------------------product name ends----------------------- -->
+                            <!-- -------------------------product rate starts----------------------- -->
+                            <?php if($enabled_richsnippets): ?>
+                            <?php
+                                $storeId = Mage::app()->getStore()->getId();
+                                $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_product->getId());
+                            ?>
+                            <?php if ($summaryData['reviews_count']): ?>
+                                <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="no-display">
+                                    <span itemprop="ratingValue"><?php echo $summaryData['rating_summary']; ?></span>
+                                    <span itemprop="reviewCount"><?php echo $summaryData['reviews_count']; ?></span>
+                                    <span itemprop="bestRating">100</span>
+                                    <span itemprop="worstRating">0</span>
+                                </span>
+                            <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php 
+                            if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
+                            ?>
+                            <?php 
+                                $review_html = $this->getReviewsSummaryHtml($product);
+                                if($review_html){
+                                    echo $review_html;
+                                }else{
+                            ?>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:0"></div>
+                                    </div>
+                                    <p class="rating-links">
+                                        <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
+                                    </p>
+                                </div>
+                            <?php                            
+                                }
+                            ?>
+                            <?php else: ?>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:0"></div>
+                                    </div>
+                                    <p class="rating-links">
+                                        <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
+                                    </p>
+                                </div>
+                            <?php endif; ?>
+                            <!-- -------------------------product rate ends----------------------- -->
+                        </div>
+                        <!--  -->
+                        <div class="product-img-box col-sm-<?php echo Mage::getStoreConfig("porto_settings/product_view/product_image_size", $code); ?> <?php echo Mage::getStoreConfig("porto_settings/product_view/thumbnail_image_type", $code); ?>">  
                             <!-- product image starts -->
                             <?php echo $this->getChildHtml('media') ?>
                             <!-- product image ends -->
@@ -147,59 +203,62 @@
                             
                             <div class="row">
                                 <div class="col-md-7">
+                                    
+                                    <div class="eve-product-title-rate-desktop">
+                                        <!-- -------------------------product name starts----------------------- -->
+                                        <div class="product-name">
+                                            <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                                        </div>
+                                        <!-- -------------------------product name ends----------------------- -->
+                                        <!-- -------------------------product rate starts----------------------- -->
+                                        <?php if($enabled_richsnippets): ?>
+                                        <?php
+                                            $storeId = Mage::app()->getStore()->getId();
+                                            $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_product->getId());
+                                        ?>
+                                        <?php if ($summaryData['reviews_count']): ?>
+                                            <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="no-display">
+                                                <span itemprop="ratingValue"><?php echo $summaryData['rating_summary']; ?></span>
+                                                <span itemprop="reviewCount"><?php echo $summaryData['reviews_count']; ?></span>
+                                                <span itemprop="bestRating">100</span>
+                                                <span itemprop="worstRating">0</span>
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php endif; ?>
 
-                                    <!-- -------------------------product name starts----------------------- -->
-                                    <div class="product-name">
-                                        <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                                        <?php 
+                                        if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
+                                        ?>
+                                        <?php 
+                                            $review_html = $this->getReviewsSummaryHtml($product);
+                                            if($review_html){
+                                                echo $review_html;
+                                            }else{
+                                        ?>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <div class="rating" style="width:0"></div>
+                                                </div>
+                                                <p class="rating-links">
+                                                    <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
+                                                </p>
+                                            </div>
+                                        <?php                            
+                                            }
+                                        ?>
+                                        <?php else: ?>
+                                            <div class="ratings">
+                                                <div class="rating-box">
+                                                    <div class="rating" style="width:0"></div>
+                                                </div>
+                                                <p class="rating-links">
+                                                    <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
+                                                </p>
+                                            </div>
+                                        <?php endif; ?>
+                                        <!-- -------------------------product rate ends----------------------- -->
                                     </div>
-                                    <!-- -------------------------product name ends----------------------- -->
-                                    <!-- -------------------------product rate starts----------------------- -->
-                                    <?php if($enabled_richsnippets): ?>
-                                    <?php
-                                        $storeId = Mage::app()->getStore()->getId();
-                                        $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_product->getId());
-                                    ?>
-                                    <?php if ($summaryData['reviews_count']): ?>
-                                        <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="no-display">
-                                            <span itemprop="ratingValue"><?php echo $summaryData['rating_summary']; ?></span>
-                                            <span itemprop="reviewCount"><?php echo $summaryData['reviews_count']; ?></span>
-                                            <span itemprop="bestRating">100</span>
-                                            <span itemprop="worstRating">0</span>
-                                        </span>
-                                    <?php endif; ?>
-                                    <?php endif; ?>
 
-                                    <?php 
-                                    if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
-                                    ?>
-                                    <?php 
-                                        $review_html = $this->getReviewsSummaryHtml($product);
-                                        if($review_html){
-                                            echo $review_html;
-                                        }else{
-                                    ?>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <div class="rating" style="width:0"></div>
-                                            </div>
-                                            <p class="rating-links">
-                                                <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
-                                            </p>
-                                        </div>
-                                    <?php                            
-                                        }
-                                    ?>
-                                    <?php else: ?>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <div class="rating" style="width:0"></div>
-                                            </div>
-                                            <p class="rating-links">
-                                                <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
-                                            </p>
-                                        </div>
-                                    <?php endif; ?>
-                                    <!-- -------------------------product rate ends----------------------- -->
                                     <?php
                                         if (Mage::getStoreConfig("porto_settings/product_view/prev_next",$code)){
                                     ?>

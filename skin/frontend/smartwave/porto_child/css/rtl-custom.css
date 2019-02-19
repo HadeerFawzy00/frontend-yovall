@@ -2527,7 +2527,7 @@ ul#payment_form_netgo_stripe ul.opc-cc-list li {
 }
 
 .box-up-sell .products-grid li.item .details-area .product-name {
-    min-height: 37px;
+    /* min-height: 37px; */
 }
 
 .box-up-sell .products-grid li.item {
@@ -2598,11 +2598,11 @@ ul#payment_form_netgo_stripe ul.opc-cc-list li {
 }
 
 .box-up-sell .product-name {
-    text-align: right !important;
+    /* text-align: right !important; */
 }
 
 .box-up-sell .products-grid .ratings {
-    text-align: right;
+    /* text-align: right; */
 }
 
 .product-view .product-name {
@@ -2954,7 +2954,7 @@ button.button.btn-cart>span {
 
 .product-view .product-img-box .etalage a.fancy-images {
     position: absolute;
-    left: 50%;
+    left: 8%;
     bottom: 40px;
     font-size: 30px;
     background: transparent;
@@ -4048,9 +4048,6 @@ button.button.btn-proceed-checkout.btn-checkout span span:before {
     }
     .col1-layout .product-view .product-info {
         border-bottom: 0px;
-    }
-    .product-view .product-name {
-        padding-top: 10px;
     }
     .product-view .add-to-cart {
         width: 100%;
@@ -6805,6 +6802,7 @@ li.etalage_small_thumbs, li.etalage_small_thumbs *{
     }
     .block.block-related {
         margin: 0;
+        display: none;
     }
     .category-products .products-grid.columns4 li.item {
         margin-bottom: 10px;
@@ -6813,6 +6811,18 @@ li.etalage_small_thumbs, li.etalage_small_thumbs *{
 @media (max-width: 767px) {
     .product-tabs .eve-product-aspects-col {
         border: none;
+    }
+    /* move the product title and the rate above the product image */
+    .eve-product-title-rate-mobile {
+        display: block;
+    }
+    .eve-product-title-rate-desktop {
+        display: none;
+    }
+    .product-view .eve-product-title-rate-mobile .product-name,
+    .product-view .eve-product-title-rate-mobile .product-name h1 {
+        padding: 0;
+        margin: 0;
     }
 }
 @media (min-width: 767px) and (max-width: 991px) {
@@ -6827,6 +6837,11 @@ li.etalage_small_thumbs, li.etalage_small_thumbs *{
     }
     .catalog-product-view .sidebar .custom-block-1>div {
         border: none;
+    }
+}
+@media (max-width: 624px) {
+    .eve-sidebar-col {
+        display: none;
     }
 }
 /* ------------------------------- */

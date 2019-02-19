@@ -23,7 +23,7 @@ $add_upsell_background = Mage::getStoreConfig("porto_settings/product_view/add_u
                     $_columnCount = 4;
             ?>
             <?php $this->resetItemsIterator() ?>
-            <ul class="products-grid columns<?php echo $_columnCount; ?>">
+            <ul class="products-grid owl-carousel columns<?php echo $_columnCount; ?>">
         <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
             <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
                 <?php if($_product=$this->getIterableItem()): ?>
@@ -184,3 +184,23 @@ $add_upsell_background = Mage::getStoreConfig("porto_settings/product_view/add_u
     </div>
 <?php endif;?>
     <?php endif; ?>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(".box-collateral .owl-carousel").owlCarousel({ 
+            lazyLoad: true, 
+            itemsCustom: [[0, 2], [320, 2], [480, 2], [768, 4], [992, 4], [1280, 4]], 
+            responsiveRefreshRate: 50, 
+            slideSpeed: 200, 
+            paginationSpeed: 500, 
+            scrollPerPage: false, 
+            stopOnHover: true, 
+            rewindNav: true, 
+            rewindSpeed: 600, 
+            pagination: false, 
+            navigation: true, 
+            autoPlay: true, 
+            navigationText: ["<i class='icon-left-open'></i>", "<i class='icon-right-open'></i>"] 
+        });
+    });
+</script>
