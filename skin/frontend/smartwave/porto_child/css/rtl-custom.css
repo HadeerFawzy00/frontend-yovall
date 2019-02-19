@@ -6787,6 +6787,23 @@ li.etalage_small_thumbs, li.etalage_small_thumbs *{
     margin-left: -5px;
     margin-right: -5px;
 }
+.eve-product-title-rate-mobile {
+    display: none;
+}
+.category-products .products-grid.columns8 li.item {
+    width: 100%;
+}
+.products-grid.owl-theme .owl-controls {
+    position: absolute;
+    top: -50px;
+    left: 0;
+}
+.products-grid.owl-theme .owl-controls .owl-buttons div {
+    border-radius: 0;
+    font-size: 18px;
+    padding: 5px;
+    background: #000000;
+}
 @media (max-width: 991px) {
     .main.container {
         width: 850px;
