@@ -1,0 +1,16 @@
+product page configuration: 
+
+- porto settings > product view > 
+	* Keep Image Aspect Ratio: NO
+	* Product Image Size: 5/12
+	* Thumbnail Images: vertical
+	* Product Tab Style: Horizontal
+	* Page Layout: 1Column
+	* Upsell Products Grid Columns: 8
+
+- catalog > Manage products > Choose product 
+	- General 
+		* Description
+ 		* Short Description 
+	- Add Related Products
+	- Add Upsell Products
