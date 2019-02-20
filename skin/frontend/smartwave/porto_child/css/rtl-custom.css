@@ -6793,16 +6793,21 @@ li.etalage_small_thumbs, li.etalage_small_thumbs *{
 .category-products .products-grid.columns8 li.item {
     width: 100%;
 }
-.products-grid.owl-theme .owl-controls {
+.products-grid.owl-theme .owl-controls,
+.eve-embeded-videos-wrapper .owl-theme .owl-controls {
     position: absolute;
     top: -50px;
     left: 0;
 }
-.products-grid.owl-theme .owl-controls .owl-buttons div {
+.products-grid.owl-theme .owl-controls .owl-buttons div,
+.eve-embeded-videos-wrapper .owl-theme .owl-controls .owl-buttons div  {
     border-radius: 0;
     font-size: 18px;
     padding: 5px;
     background: #000000;
+}
+.eve-embeded-videos-wrapper .owl-item .item {
+    width: 100%;
 }
 @media (max-width: 991px) {
     .main.container {
