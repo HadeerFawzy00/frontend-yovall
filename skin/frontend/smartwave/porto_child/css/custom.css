@@ -6129,11 +6129,15 @@ ul.form-list li div.input-box {
 .product-tabs .eve-product-aspects-col {
     border-left: 1px solid;
 }
-.product-tabs .eve-product-description-col .eve-product-description-img {
-    max-width: 100%;
-    margin: 10px 0;
+.product-tabs .eve-product-description-col p {
+    margin: 0;
 }
-
+.product-tabs .eve-product-description-col .eve-product-description-img {
+    width: 120px;
+}
+.eve-product-description-col .eve-media-object {
+    margin: 20px 0;
+}
 .eve-embeded-videos-wrapper {
     margin-top: 40px;
 }
@@ -6216,22 +6220,33 @@ ul.form-list li div.input-box {
     background-color: #fff;
 }
 .eve-product-section-row {
-    margin: 0 -15px;
+    /* margin: 0 -15px; */
 }
 .eve-related-products-col {
     margin-top: -120px;
+    background: #fff;
+    box-shadow: 0px 0px 1px 1px #ccc;
 }
 .block.block-related {
-    padding: 20px;
-    background: #fff;
-    margin-left: -17px;
-    margin-right: 16px;
+    padding: 20px 10px;
 }
 .catalog-product-view .sidebar .custom-block {
+    padding: 0;
+    margin-bottom: 10px;
+}
+.eve-sidebar-col-wrapper {
     padding: 0;
 }
 .eve-sidebar-col {
     background: #fff;
+    padding: 15px;
+    box-shadow: 0px 0px 1px 1px #ccc;
+}
+.eve-sidebar-payment {
+    background: #fff;
+    margin-bottom: 25px;
+    padding: 15px;
+    box-shadow: 0px 0px 1px 1px #ccc;
 }
 .category-products .products-grid.columns4 {
     margin-left: -5px;
@@ -6243,16 +6258,49 @@ ul.form-list li div.input-box {
 .category-products .products-grid.columns8 li.item {
     width: 100%;
 }
-.products-grid.owl-theme .owl-controls {
+.products-grid.owl-theme .owl-controls,
+.eve-embeded-videos-wrapper .owl-theme .owl-controls {
     position: absolute;
     top: -50px;
     right: 0;
 }
-.products-grid.owl-theme .owl-controls .owl-buttons div {
+.products-grid.owl-theme .owl-controls .owl-buttons div,
+.eve-embeded-videos-wrapper .owl-theme .owl-controls .owl-buttons div  {
     border-radius: 0;
     font-size: 18px;
     padding: 5px;
     background: #000000;
+}
+.eve-embeded-videos-wrapper .owl-item .item {
+    width: 100%;
+}
+.warranty-guaranty-wrapper {
+    background: #fff;
+    padding: 15px;
+    margin: 0px 0 10px;
+    border: 1px solid #eee;
+}
+.warranty-guaranty-wrapper img{
+    width: 70px;
+}
+.eve-media-object {
+    display: table;
+}
+.eve-media-object .eve-text,
+.eve-media-object .eve-media-dev {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+.clearfix {
+    clear: both;
+}
+.warranty-guaranty-h {
+    color: #333;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+    margin-top: 20px;
 }
 @media (max-width: 991px) {
     .main.container {
@@ -6262,10 +6310,14 @@ ul.form-list li div.input-box {
         margin: 0;
     }
     .catalog-product-view .sidebar .custom-block {
-        margin-top: 30px;
+        margin: 0px;
+    }
+    .catalog-product-view .sidebar .custom-block-1>div {
+        min-height: auto;
     }
     .eve-related-products-col {
-        margin-top: 20px;
+        margin-top: 0px;
+        display: none;
     }
     .block.block-related {
         margin: 0;
@@ -6273,6 +6325,19 @@ ul.form-list li div.input-box {
     }
     .category-products .products-grid.columns4 li.item {
         margin-bottom: 10px;
+    }
+    .eve-sidebar-payment h3 {
+        float: left;
+        margin-top: 15px;
+    }
+    .eve-sidebar-payment div {
+        text-align: right;
+    }
+    .eve-sidebar-payment div img {
+        height: 50px;
+    }
+    .eve-sidebar-col-wrapper {
+        padding: 15px;
     }
 }
 @media (max-width: 767px) {
@@ -6291,11 +6356,15 @@ ul.form-list li div.input-box {
         padding: 0;
         margin: 0;
     }
+    .product-tabs .eve-section-title {
+        margin-top: 0;
+    }
 }
 @media (min-width: 767px) and (max-width: 991px) {
-    .eve-sidebar-col {
+    /* .eve-sidebar-col,
+    .eve-sidebar-payment {
         margin-left: -80%;
-    }
+    } */
 }
 @media (min-width: 625px) and (max-width: 991px) {
     .catalog-product-view .sidebar .custom-block {
@@ -6304,10 +6373,29 @@ ul.form-list li div.input-box {
     }
     .catalog-product-view .sidebar .custom-block-1>div {
         border: none;
+        padding: 0;
     }
 }
 @media (max-width: 624px) {
     .eve-sidebar-col {
-        display: none;
+        /* display: none; */
+    }
+}
+@media (max-width: 492px) {
+    .eve-sidebar-payment h3 {
+        float: none;
+        margin-top: 0;
+    }
+    .eve-sidebar-payment div {
+        text-align: center;
+    }
+    .eve-product-description-col .eve-media-object {
+        text-align: center;
+    }
+    .eve-media-object .eve-media-dev {
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+        padding: 0;
     }
 }
